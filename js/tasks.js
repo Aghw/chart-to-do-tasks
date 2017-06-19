@@ -31,13 +31,6 @@ function taskListBuilder() {
   tasks.push(newTask);
 }
 
-function onWindowLoad() {
-   //Select the form, and attach houseBuilder as onSubmit handler
-   var form = document.querySelector("form");
-   form.onsubmit = taskListBuilder;
-}
-
-window.onload = onWindowLoad;
 
 // Load the Visualization API and the corechart package.
 google.charts.load('current', {'packages':['corechart']});
@@ -75,37 +68,21 @@ function countTasksAssigned() {
   var whoIs = 'label[for=' + radios[forId].id + ']';
   var assigned = document.querySelector(whoIs);
 
-  // if(assigned.innerHTML === "Jeremy"){
-  //   taskCounter.jeremy += 1;
-  // } else if (assigned.innerHTML === "Victor") {
-  //   taskCounter.victor += 1;
-  // }  else if (assigned.innerHTML === "Robert") {
-  //   taskCounter.robert += 1;
-  // }  else if (assigned.innerHTML === "David") {
-  //   taskCounter.david += 1;
-  // }  else if (assigned.innerHTML === "Michael") {
-  //   taskCounter.michael += 1;
-  // }
+
   var d = document.getElementById("difficulty");
   var selected = d.options[d.selectedIndex].text;
-
-  console.log(selected);
 
   if(assigned.innerHTML === "Jeremy"){
     taskCounter.jeremy += 1;
 
     if (selected === "Easy") {
       taskDifficulty.jeremy[0] += 1;
-      console.log(taskDifficulty.jeremy[0]);
     } else if (selected === "Regular") {
       taskDifficulty.jeremy[1] += 1;
-      console.log(taskDifficulty.jeremy[1]);
     } else if (selected === "Hard") {
       taskDifficulty.jeremy[2] += 1;
-      console.log(taskDifficulty.jeremy[2]);
     } else if (selected === "Devilish") {
       taskDifficulty.jeremy[3] += 1;
-      console.log(taskDifficulty.jeremy[3]);
     }
   } else if (assigned.innerHTML === "Victor") {
     taskCounter.victor += 1;
@@ -210,97 +187,6 @@ function drawChart() {
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawStacked);
 
-// // Hold all our count data in key/value format so it's easy to access
-// var taskDifficulty = {
-//   jeremy: [0, 0, 0, 0],
-//   victor: [0, 0, 0, 0],
-//   robert: [0, 0, 0, 0],
-//   david:  [0, 0, 0, 0],
-//   michael:[0, 0, 0, 0]
-// };
-//
-// function groupAssignedTasksByDifficulty() {
-//   var form = document.querySelector("form");
-//
-//   // Find who the task is assigned to
-//   var radios = document.getElementsByName("assignee");
-//   var forId = form.assignee.value;
-//   var whoIs = 'label[for=' + radios[forId].id + ']';
-//   var assigned = document.querySelector(whoIs);
-//
-//   var d = document.getElementById("difficulty");
-//   var selected = d.options[d.selectedIndex].text;
-//
-//   console.log(selected);
-//
-//   if(assigned.innerHTML === "Jeremy"){
-//     // taskCounter.jeremy += 1;
-//
-//     if (selected === "Easy") {
-//       taskDifficulty.jeremy[0] += 1;
-//       console.log(taskDifficulty.jeremy[0]);
-//     } else if (selected === "Regular") {
-//       taskDifficulty.jeremy[1] += 1;
-//       console.log(taskDifficulty.jeremy[1]);
-//     } else if (selected === "Hard") {
-//       taskDifficulty.jeremy[2] += 1;
-//       console.log(taskDifficulty.jeremy[2]);
-//     } else if (selected === "Devilish") {
-//       taskDifficulty.jeremy[3] += 1;
-//       console.log(taskDifficulty.jeremy[3]);
-//     }
-//   } else if (assigned.innerHTML === "Victor") {
-//     // taskCounter.victor += 1;
-//
-//     if (selected === "Easy") {
-//       taskDifficulty.victor[0] += 1;
-//     } else if (selected === "Regular") {
-//       taskDifficulty.victor[1] += 1;
-//     } else if (selected === "Hard") {
-//       taskDifficulty.victor[2] += 1;
-//     } else if (selected === "Devilish") {
-//       taskDifficulty.victor[3] += 1;
-//     }
-//   }  else if (assigned.innerHTML === "Robert") {
-//     // taskCounter.robert += 1;
-//
-//     if (selected === "Easy") {
-//       taskDifficulty.robert[0] += 1;
-//     } else if (selected === "Regular") {
-//       taskDifficulty.robert[1] += 1;
-//     } else if (selected === "Hard") {
-//       taskDifficulty.robert[2] += 1;
-//     } else if (selected === "Devilish") {
-//       taskDifficulty.robert[3] += 1;
-//     }
-//
-//   }  else if (assigned.innerHTML === "David") {
-//     // taskCounter.david += 1;
-//
-//     if (selected === "Easy") {
-//       taskDifficulty.david[0] += 1;
-//     } else if (selected === "Regular") {
-//       taskDifficulty.david[1] += 1;
-//     } else if (selected === "Hard") {
-//       taskDifficulty.david[2] += 1;
-//     } else if (selected === "Devilish") {
-//       taskDifficulty.david[3] += 1;
-//     }
-//   }  else if (assigned.innerHTML === "Michael") {
-//     // taskCounter.michael += 1;
-//
-//     if (selected === "Easy") {
-//       taskDifficulty.michael[0] += 1;
-//     } else if (selected === "Regular") {
-//       taskDifficulty.michael[1] += 1;
-//     } else if (selected === "Hard") {
-//       taskDifficulty.michael[2] += 1;
-//     } else if (selected === "Devilish") {
-//       taskDifficulty.michael[3] += 1;
-//     }
-//   }
-//
-// }
 
 
 function drawStacked() {
@@ -322,7 +208,7 @@ function drawStacked() {
   ]);
 
   var options = {
-    title: 'Motivation and Energy Level Throughout the Day',
+    title: 'Task Assigned to People Grouped by Difficulty',
     isStacked: true,
     hAxis: {
       title: 'People',
@@ -336,3 +222,13 @@ function drawStacked() {
   var chart = new google.visualization.ColumnChart(document.getElementById('chart_column'));
   chart.draw(data, options);
 }
+
+
+
+function onWindowLoad() {
+   //Select the form, and attach houseBuilder as onSubmit handler
+   var form = document.querySelector("form");
+   form.onsubmit = taskListBuilder;
+}
+
+window.onload = onWindowLoad;
