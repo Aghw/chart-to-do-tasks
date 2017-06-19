@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Create Tasks</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <style >
+      @import url('https://fonts.googleapis.com/css?family=Syncopate');
+    </style>
+
+  </head>
+  <body>
+      <header>
+        <h1 id="primary-content">
+          Create To Do Tasks
+        </h1>
+      </header>
+
+      <main>
+        <div class="todo-list">
+          <form id="todo-tasks" name="toDo">
+            <fieldset class="task-input1">
+                  <legend id="task-input-label">Enter task Info</legend>
+
+                  <label for="user-todo">Task Description:</label>
+                  <input class="todo-input" type="text" name="taskName" id="user-todo"
+                  placeholder="tasks ...">
+
+
+                  <br>
+                  <br>
+                  <fieldset class="task-assign">
+                      <legend>Assign the Task to:</legend>
+
+                      <input type="radio" name="assignee" id="assign1" value="0">
+                      <label for="assign1">Jeremy</label>
+                      <br>
+
+                      <input type="radio" name="assignee" id="assign2" value="1">
+                      <label for="assign2">Victor</label>
+                      <br>
+
+                      <input type="radio" name="assignee" id="assign3" value="2" checked>
+                      <label for="assign3">Robert</label>
+                      <br>
+
+                      <input type="radio" name="assignee" id="assign4" value="3">
+                      <label for="assign4">David</label>
+                      <br>
+
+                      <input type="radio" name="assignee" id="assign5" value="4">
+                      <label for="assign5">Michael</label>
+
+                  </fieldset>
+                  <br>
+                  <label for="difficulty">Select Difficulty:</label>
+                  <select id="difficulty" name="task-difficulty">
+                    <option value="">Please select a level of Difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="regular">Regular</option>
+                    <option value="hard">Hard</option>
+                    <option value="devil">Devilish</option>
+
+                  </select>
+                  <br>
+                  <input type="submit" value="Add">
+              </fieldset>
+
+          </form>
+        </div>
+        <form id="list-tasks">
+            <div id="list-container"></div>
+
+            <br>
+            <!--Div that will hold the pie chart-->
+            <div id="chart_div"></div>
+            <hr>
+
+            <div id="chart_column"></div>
+
+        </form>
+      </main>
+
+      <footer>
+      </footer>
+
+      <!--Load the AJAX API-->
+      <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript" src="js/tasks.js"></script>
+  </body>
+</html>
