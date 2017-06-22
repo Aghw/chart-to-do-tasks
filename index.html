@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <style >
       @import url('https://fonts.googleapis.com/css?family=Syncopate');
     </style>
@@ -19,7 +21,8 @@
   <body>
       <header>
         <h1 id="primary-content">
-          Create To Do Tasks
+          Charts of Task Assignments
+          <!-- <i class="fa fa-pencil" aria-hidden="true">...</i> -->
         </h1>
       </header>
 
@@ -31,7 +34,7 @@
 
                   <label for="user-todo">Task Description:</label>
                   <input class="todo-input" type="text" name="taskName" id="user-todo"
-                  placeholder="tasks ...">
+                  placeholder="Enter a task">
 
 
                   <br>
@@ -50,14 +53,6 @@
                       <input type="radio" name="assignee" id="assign3" value="2" checked>
                       <label for="assign3">Robert</label>
                       <br>
-
-                      <input type="radio" name="assignee" id="assign4" value="3">
-                      <label for="assign4">David</label>
-                      <br>
-
-                      <input type="radio" name="assignee" id="assign5" value="4">
-                      <label for="assign5">Michael</label>
-
                   </fieldset>
                   <br>
                   <label for="difficulty">Select Difficulty:</label>
@@ -70,7 +65,7 @@
 
                   </select>
                   <br>
-                  <input type="submit" value="Add">
+                  <input type="submit" value="Assign Task" class="btn">
               </fieldset>
 
           </form>

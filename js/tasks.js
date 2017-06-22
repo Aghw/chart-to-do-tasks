@@ -50,11 +50,15 @@ var taskCounter = {
 
 // Hold all our count data in key/value format so it's easy to access
 var taskDifficulty = {
-  jeremy: [0, 0, 0, 0],
-  victor: [0, 0, 0, 0],
-  robert: [0, 0, 0, 0],
-  david:  [0, 0, 0, 0],
-  michael:[0, 0, 0, 0]
+  // jeremy: [0, 0, 0, 0],
+  // victor: [0, 0, 0, 0],
+  // robert: [0, 0, 0, 0],
+  // david:  [0, 0, 0, 0],
+  // michael:[0, 0, 0, 0]
+
+  jeremy: {easy:0, regular: 0, hard:0, devilish:0 },
+  victor: {easy:0, regular: 0, hard:0, devilish:0 },
+  robert: {easy:0, regular: 0, hard:0, devilish:0 },
 };
 
 
@@ -76,64 +80,78 @@ function countTasksAssigned() {
     taskCounter.jeremy += 1;
 
     if (selected === "Easy") {
-      taskDifficulty.jeremy[0] += 1;
+      // taskDifficulty.jeremy[0] += 1;
+      taskDifficulty.jeremy.easy += 1;
     } else if (selected === "Regular") {
-      taskDifficulty.jeremy[1] += 1;
+      // taskDifficulty.jeremy[1] += 1;
+      taskDifficulty.jeremy.regular += 1;
     } else if (selected === "Hard") {
-      taskDifficulty.jeremy[2] += 1;
+      // taskDifficulty.jeremy[2] += 1;
+      taskDifficulty.jeremy.hard += 1;
     } else if (selected === "Devilish") {
-      taskDifficulty.jeremy[3] += 1;
+      // taskDifficulty.jeremy[3] += 1;
+      taskDifficulty.jeremy.devilish += 1;
     }
   } else if (assigned.innerHTML === "Victor") {
     taskCounter.victor += 1;
 
     if (selected === "Easy") {
-      taskDifficulty.victor[0] += 1;
+      // taskDifficulty.victor[0] += 1;
+      taskDifficulty.victor.easy += 1;
     } else if (selected === "Regular") {
-      taskDifficulty.victor[1] += 1;
+      // taskDifficulty.victor[1] += 1;
+      taskDifficulty.victor.regular += 1;
     } else if (selected === "Hard") {
-      taskDifficulty.victor[2] += 1;
+      // taskDifficulty.victor[2] += 1;
+      taskDifficulty.victor.hard += 1;
     } else if (selected === "Devilish") {
-      taskDifficulty.victor[3] += 1;
+      // taskDifficulty.victor[3] += 1;
+      taskDifficulty.victor.devilish += 1;
     }
   }  else if (assigned.innerHTML === "Robert") {
     taskCounter.robert += 1;
 
     if (selected === "Easy") {
-      taskDifficulty.robert[0] += 1;
+      // taskDifficulty.robert[0] += 1;
+      taskDifficulty.robert.easy += 1;
     } else if (selected === "Regular") {
-      taskDifficulty.robert[1] += 1;
+      // taskDifficulty.robert[1] += 1;
+      taskDifficulty.robert.regular += 1;
     } else if (selected === "Hard") {
-      taskDifficulty.robert[2] += 1;
+      // taskDifficulty.robert[2] += 1;
+      taskDifficulty.robert.hard += 1;
     } else if (selected === "Devilish") {
-      taskDifficulty.robert[3] += 1;
+      // taskDifficulty.robert[3] += 1;
+      taskDifficulty.robert.devilish += 1;
     }
 
-  }  else if (assigned.innerHTML === "David") {
-    taskCounter.david += 1;
-
-    if (selected === "Easy") {
-      taskDifficulty.david[0] += 1;
-    } else if (selected === "Regular") {
-      taskDifficulty.david[1] += 1;
-    } else if (selected === "Hard") {
-      taskDifficulty.david[2] += 1;
-    } else if (selected === "Devilish") {
-      taskDifficulty.david[3] += 1;
-    }
-  }  else if (assigned.innerHTML === "Michael") {
-    taskCounter.michael += 1;
-
-    if (selected === "Easy") {
-      taskDifficulty.michael[0] += 1;
-    } else if (selected === "Regular") {
-      taskDifficulty.michael[1] += 1;
-    } else if (selected === "Hard") {
-      taskDifficulty.michael[2] += 1;
-    } else if (selected === "Devilish") {
-      taskDifficulty.michael[3] += 1;
-    }
   }
+  //
+  // else if (assigned.innerHTML === "David") {
+  //   taskCounter.david += 1;
+  //
+  //   if (selected === "Easy") {
+  //     taskDifficulty.david[0] += 1;
+  //   } else if (selected === "Regular") {
+  //     taskDifficulty.david[1] += 1;
+  //   } else if (selected === "Hard") {
+  //     taskDifficulty.david[2] += 1;
+  //   } else if (selected === "Devilish") {
+  //     taskDifficulty.david[3] += 1;
+  //   }
+  // }  else if (assigned.innerHTML === "Michael") {
+  //   taskCounter.michael += 1;
+  //
+  //   if (selected === "Easy") {
+  //     taskDifficulty.michael[0] += 1;
+  //   } else if (selected === "Regular") {
+  //     taskDifficulty.michael[1] += 1;
+  //   } else if (selected === "Hard") {
+  //     taskDifficulty.michael[2] += 1;
+  //   } else if (selected === "Devilish") {
+  //     taskDifficulty.michael[3] += 1;
+  //   }
+  // }
 
 
   // var div1 = document.getElementById("list-container");
@@ -166,8 +184,8 @@ function drawChart() {
           ['Jeremy', taskCounter.jeremy],
           ['Victor', taskCounter.victor],
           ['Robert', taskCounter.robert],
-          ['David', taskCounter.david],
-          ['Michael', taskCounter.michael]
+//           ['David', taskCounter.david],
+//           ['Michael', taskCounter.michael]
     ]);
 
     // Set chart options
@@ -199,12 +217,20 @@ function drawStacked() {
 
   var t = taskDifficulty;
 
+  // data.addRows([
+  //   ['Jeremy', t.jeremy[0], t.jeremy[1], t.jeremy[2], t.jeremy[3]],
+  //   ['Victor', t.victor[0], t.victor[1], t.victor[2], t.victor[3]],
+  //   ['Robert', t.robert[0], t.robert[1], t.robert[2], t.robert[3]],
+  //   // ['David', t.david[0], t.david[1], t.david[2], t.david[3]],
+  //   // ['Michael', t.michael[0], t.michael[1], t.michael[2], t.michael[3]],
+  // ]);
+
   data.addRows([
-    ['Jeremy', t.jeremy[0], t.jeremy[1], t.jeremy[2], t.jeremy[3]],
-    ['Victor', t.victor[0], t.victor[1], t.victor[2], t.victor[3]],
-    ['Robert', t.robert[0], t.robert[1], t.robert[2], t.robert[3]],
-    ['David', t.david[0], t.david[1], t.david[2], t.david[3]],
-    ['Michael', t.michael[0], t.michael[1], t.michael[2], t.michael[3]],
+    ['Jeremy', t.jeremy.easy, t.jeremy.regular, t.jeremy.hard, t.jeremy.devilish],
+    ['Victor', t.victor.easy, t.victor.regular, t.victor.hard, t.victor.devilish],
+    ['Robert', t.robert.easy, t.robert.regular, t.robert.hard, t.robert.devilish],
+    // ['David', t.david[0], t.david[1], t.david[2], t.david[3]],
+    // ['Michael', t.michael[0], t.michael[1], t.michael[2], t.michael[3]],
   ]);
 
   var options = {
